@@ -15,32 +15,20 @@ if (user) {
 
 document.getElementById("checkin").addEventListener("click", () => {
 
-    if (!navigator.geolocation) {
-        alert("Thiết bị không hỗ trợ GPS");
-        return;
-    }
+    const checkInTime = new Date().toLocaleString('en-GB');
 
-    navigator.geolocation.getCurrentPosition(
+    console.log(checkInTime);
 
-        function(position) {
+    navigator.geolocation.getCurrentPosition(position => {
 
-            const lat = position.coords.latitude;
-            const lng = position.coords.longitude;
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
 
-            document.getElementById("location").innerHTML =
-                "📍 " + lat + "<br>" + lng;
+        console.log("Time:", checkInTime);
+        console.log("Lat:", lat);
+        console.log("Lng:", lng);
 
-        },
-
-        function(error) {
-
-            alert("Không lấy được GPS");
-
-            console.log(error);
-
-        }
-
-    );
+    });
 
 });
 
