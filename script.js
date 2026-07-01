@@ -13,3 +13,55 @@ if (user) {
         "Running outside Telegram";
 }
 
+document.getElementById("checkin").addEventListener("click", () => {
+
+    if (!navigator.geolocation) {
+        alert("Thiết bị không hỗ trợ GPS");
+        return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+
+        function(position) {
+
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
+
+            document.getElementById("location").innerHTML =
+                "📍 " + lat + "<br>" + lng;
+
+        },
+
+        function(error) {
+
+            alert("Không lấy được GPS");
+
+            console.log(error);
+
+        }
+
+    );
+
+});
+
+document.getElementById("checkin").addEventListener("click", () => {
+    if (!navigator.geolocation) {
+        alert("Thiết bị không hỗ trợ GPS");
+        return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+        function(position) {
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
+
+            document.getElementById("location").innerHTML =
+                "📍 " + lat + "<br>" + lng;
+        },
+        function(error) {
+            alert("Không lấy được GPS");
+            console.log(error);
+        }
+    );
+});
+
